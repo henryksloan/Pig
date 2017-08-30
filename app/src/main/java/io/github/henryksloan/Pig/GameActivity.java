@@ -5,7 +5,9 @@ import android.graphics.PorterDuff;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.ContextThemeWrapper;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -17,10 +19,16 @@ public class GameActivity extends AppCompatActivity {
     public static final String EXTRA_COLOR = "io.github.henryksloan.Pig.COLOR";
     public static final String EXTRA_WINNER_NUMBER = "io.github.henryksloan.Pig.WINNER_NUMBER";
 
-    final int playerCount = 2;
     final int playerColors[] = {R.color.colorP1,
-                                R.color.colorP2};
+                                R.color.colorP2,
+                                R.color.colorP3,
+                                R.color.colorP4,
+                                R.color.colorP5,
+                                R.color.colorP6,
+                                R.color.colorP7,
+                                R.color.colorP8};
 
+    int playerCount;
     int currentPlayerIndex;
     int currentTurnPoints;
     int points[];
@@ -30,15 +38,18 @@ public class GameActivity extends AppCompatActivity {
     LinearLayout infoArea;
     TextView playerText;
     TextView turnPointsText;
-    TextView player1Text;
-    TextView player2Text;
+    LinearLayout pointsArea;
+    TextView playerTexts[];
+    /* TextView player1Text;
+    TextView player2Text; */
     Button rollButton;
     Button holdButton;
 
     private void updateText() {
         playerText.setText(getString(R.string.player_text, (currentPlayerIndex + 1)));
-        player1Text.setText(getString(R.string.player_points_text, points[0]));
-        player2Text.setText(getString(R.string.player_points_text, points[1]));
+        for (int i = 0; i < playerTexts.length; i++) {
+            playerTexts[i].setText(getString(R.string.player_points_text, points[i]));
+        }
         turnPointsText.setText(getString(R.string.turn_points_text, currentTurnPoints));
     }
 
@@ -118,6 +129,8 @@ public class GameActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_game);
 
+        Intent intent = getIntent();
+        playerCount = intent.getIntExtra(MainMenuActivity.EXTRA_PLAYER_COUNT, 2);
         currentPlayerIndex = 0;
         currentTurnPoints = 0;
         points = new int[playerCount];
@@ -127,10 +140,22 @@ public class GameActivity extends AppCompatActivity {
         infoArea = (LinearLayout) findViewById(R.id.infoArea);
         playerText = (TextView) findViewById(R.id.playerText);
         turnPointsText = (TextView) findViewById(R.id.turnPointsText);
-        player1Text = (TextView) findViewById(R.id.player1Text);
-        player2Text = (TextView) findViewById(R.id.player2Text);
+        pointsArea = (LinearLayout) findViewById(R.id.pointsArea);
+
+        playerTexts = new TextView[playerCount];
+        for (int i = 0; i < playerCount; i++) {
+            playerTexts[i] = new TextView(new ContextThemeWrapper(this, R.style.GameText));
+            playerTexts[i].setLayoutParams(new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f/playerCount));
+            playerTexts[i].setBackgroundColor(ContextCompat.getColor(this, playerColors[i]));
+            pointsArea.addView(playerTexts[i]);
+        }
+
         rollButton = (Button)findViewById(R.id.rollButton);
         holdButton = (Button)findViewById(R.id.holdButton);
+
+
 
         updateText();
         setInfoColor();
