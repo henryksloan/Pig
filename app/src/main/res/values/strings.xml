@@ -6,4 +6,6 @@
     <string name="roll">Roll</string>
     <string name="hold">Hold</string>
     <string name="win">Player %1$d wins!</string>
+    <string name="pig">Pig</string>
+    <string name="start">Start</string>
 </resources>

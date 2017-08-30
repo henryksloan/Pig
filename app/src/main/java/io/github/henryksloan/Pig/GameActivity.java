@@ -107,6 +107,8 @@ public class GameActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_COLOR, playerColors[winner_index]);
         intent.putExtra(EXTRA_WINNER_NUMBER, winner_index + 1);
         startActivity(intent);
+
+        finish();
     }
 
     @Override
@@ -133,14 +135,14 @@ public class GameActivity extends AppCompatActivity {
         updateText();
         setInfoColor();
 
-        rollButton.setOnClickListener(new View.OnClickListener(){
+        rollButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 roll();
             }
         });
 
-        holdButton.setOnClickListener(new View.OnClickListener(){
+        holdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 updatePoints();

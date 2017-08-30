@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.github.henryksloan.Pig.GameActivity"
-    tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:context="io.github.henryksloan.Pig.GameActivity">
     <LinearLayout
         android:id="@+id/pointsArea"
         android:layout_width="wrap_content"
@@ -22,8 +20,7 @@
             android:layout_weight=".5"
             android:ems="10"
             android:background="@color/colorP1"
-            android:textSize="32sp"
-            android:gravity="center" />
+            android:theme="@style/GameText" />
         <TextView
             android:id="@+id/player2Text"
             android:layout_width="wrap_content"
@@ -31,8 +28,7 @@
             android:layout_weight=".5"
             android:ems="10"
             android:background="@color/colorP2"
-            android:gravity="center"
-            android:textSize="32sp" />
+            android:theme="@style/GameText" />
     </LinearLayout>
 
     <LinearLayout
@@ -47,18 +43,14 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:textSize="32sp"
-            android:maxLines="1"
-            android:gravity="center" />
+            android:theme="@style/GameText" />
 
         <TextView
             android:id="@+id/turnPointsText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:gravity="center"
-            android:maxLines="1"
-            android:textSize="32sp" />
+            android:theme="@style/GameText" />
     </LinearLayout>
 
     <LinearLayout
