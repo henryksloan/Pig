@@ -5,7 +5,6 @@ import android.graphics.PorterDuff;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -62,7 +61,7 @@ public class MainMenuActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainMenuActivity.this, GameActivity.class);
+                Intent intent = new Intent(MainMenuActivity.this, GameFragment.class);
                 intent.putExtra(EXTRA_PLAYER_COUNT, playerCountBar.getProgress() + 2);
                 startActivity(intent);
             }

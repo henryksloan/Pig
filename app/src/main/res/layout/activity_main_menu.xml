@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="io.github.henryksloan.Pig.MainMenuActivity"
     android:background="@color/colorP1">
-
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
@@ -52,7 +51,7 @@
         <SeekBar
             android:id="@+id/playerCountBar"
             style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="146dp"
+            android:layout_width="200dp"
             android:layout_height="24dp"
             android:max="6"
             android:progress="0" />
@@ -65,5 +64,4 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"/>
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>

@@ -16,10 +16,10 @@ public class WinActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         findViewById(android.R.id.content).setBackgroundColor(ContextCompat.getColor(this,
-                intent.getIntExtra(GameActivity.EXTRA_COLOR, R.color.colorPrimary)));
+                intent.getIntExtra(GameFragment.EXTRA_COLOR, R.color.colorPrimary)));
 
         winnerText = (TextView) findViewById(R.id.winnerText);
         winnerText.setText(getString(R.string.win,
-                intent.getIntExtra(GameActivity.EXTRA_WINNER_NUMBER, 0)));
+                intent.getIntExtra(GameFragment.EXTRA_WINNER_NUMBER, 0)));
     }
 }
